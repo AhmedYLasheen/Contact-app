@@ -1,0 +1,11 @@
+body {
+  background-image: url('./images/background.jpg');
+  background-size: cover ;  
+  margin: 0;
+  font-family: 'Inter', sans-serif !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #fff !important; */
+}

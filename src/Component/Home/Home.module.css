@@ -1,0 +1,28 @@
+.userImg{
+    width: 109px;
+    height: 106px;
+    border: none;
+}
+a{
+    text-decoration: none !important;
+    color: unset !important;
+}
+#conatiner{
+    width: 80vw;
+}
+
+.line{
+    width: 90% !important;
+    height: 2px;
+    background: #FFF;
+    margin-left: 3%;
+    
+}
+.userInfo{
+    margin-left: 10% !important;
+
+}
+
+.searchbtn{
+    width: 95% !important;
+}
