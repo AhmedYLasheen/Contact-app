@@ -9,8 +9,8 @@ export default function AddContact() {
     let [user, setUser] = useState({
         firstName: '',
         lastName: '',
-        email: '',
         picture: '',
+        email: '',
     })
 
 
@@ -24,27 +24,27 @@ export default function AddContact() {
         },
     };
 
-    const setUserData = () => { 
-        axios.post('https://dummyapi.io/data/v1/user/create',user,config)
-        .then((result) => {
-            console.log(result.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    }
-
-    // async function setUserData(e){
-    //     e.preventDefault();
-    //     let {data}=await axios.post(`https://dummyapi.io/data/v1/user/create`,user,config);
-    //     console.log(data);
+    // const setUserData = () => { 
+    //     axios.post('https://dummyapi.io/data/v1/user/create',user,config)
+    //     .then((result) => {
+    //         console.log(result.data);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
     // }
+
+    async function setUserData(e) {
+        e.preventDefault();
+        let { data } = await axios.post(`https://dummyapi.io/data/v1/user/create`, user, config);
+        console.log(data);
+    }
 
     function getUserValue(e) {
         let newUser = { ...user };
         newUser[e.target.name] = e.target.value
         setUser(newUser)
-        console.log(newUser);
+        // console.log(newUser);
 
     }
 
@@ -56,29 +56,29 @@ export default function AddContact() {
                     <img className="" src={imgUser1} />
                     <h6 >Upload Photo</h6>
                 </div>
-                <form className="addUser  ">
+                <form onSubmit={setUserData} className="addUser">
                     <div className="row mb-4 g-3">
                         <div className="col">
-                            <input onChange={getUserValue} type="text" className="form-control" placeholder="First name" name="firstName" />
+                            <input required onChange={getUserValue} type="text" className="form-control" placeholder="First name" name="firstName" />
                         </div>
                         <div className="col">
-                            <input onChange={getUserValue} type="text" className="form-control" placeholder="Last name" name="lastName" />
+                            <input required onChange={getUserValue} type="text" className="form-control" placeholder="Last name" name="lastName" />
                         </div>
                     </div>
                     <div className="row mb-4 g-3">
                         <div className="col">
-                            <input onChange={getUserValue} type="email" className="form-control" placeholder="Phone Number" name="email" />
+                            <input onChange={getUserValue} type="text" className="form-control" placeholder="picture Url" name="picture" />
                         </div>
                         <div className="col">
-                            <input onChange={getUserValue} type="text" className="form-control" placeholder="Email" name="picture" />
+                            <input required onChange={getUserValue} type="text" className="form-control" placeholder="Email" name="email" />
                         </div>
                     </div>
-
+                    <div className="saveUser d-flex justify-content-between ">
+                        <button onClick={() => navegat('/')} type="button" className="btn btn-primary"> Cancel </button>
+                        <button type="Submit" className="btn btn-secondary">Save</button>
+                    </div>
                 </form>
-                <div className="saveUser d-flex justify-content-between ">
-                    <button onClick={() => navegat('/')} type="button" className="btn btn-primary"> Cancel </button>
-                    <button onClick={setUserData} type="button" className="btn btn-secondary">Save</button>
-                </div>
+
             </div>
         </>
     )

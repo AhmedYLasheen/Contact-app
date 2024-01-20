@@ -65,7 +65,7 @@ export default function Home() {
         axios.delete(`https://dummyapi.io/data/v1/user/${id}`, config)
             .then((res) => {
                 gatUsers()
-                console.log(res);
+                // console.log(res);
             })
             .catch((err) => console.log(err))
     }
@@ -103,18 +103,18 @@ export default function Home() {
                     <div className="clearfix "></div>
                 </div>
                 <div className="row ">
-                    {contacts.slice(start, end).map((contact, index) => {
+                    {contacts.slice(start, end).map((contact,index) => {
                         return (
                             <>
                                 <div key={index} className=" p-5   d-flex flex-column flex-sm-row gap-3 justify-content-between ">
-                                    <div className={`${start.userInfo}  d-flex gap-4 align-items-center justify-content-between `}>
+                                    <div className={`${start.userInfo}  d-flex gap-4  align-items-center justify-content-between `}>
                                         <img
                                             className={`${style.userImg} rounded-circle`}
                                             srcSet={contact.picture}
                                         />
                                         <div className="h-100 d-flex flex-column  justify-content-around">
                                             <h6 className="m-0">{contact.firstName} {contact.lastName}</h6>
-                                            <p className="m-0">01066501521</p>
+                                            <h6 className="m-0"> 01066501521</h6>
                                         </div>
                                     </div>
                                     <div className="icon d-flex align-items-start gap-4">
