@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import imgUser1 from "../../images/user11.jpeg";
 import { Link } from "react-router-dom";
 import style from "./Home.module.css";
 import axios from "axios";
@@ -10,6 +9,8 @@ export default function Home() {
     const [start, setstart] = useState(0)
     const [end, setend] = useState(2)
     const [search, setsearch] = useState([])
+
+    
 
     const config = {
         headers: {
@@ -65,6 +66,7 @@ export default function Home() {
         axios.delete(`https://dummyapi.io/data/v1/user/${id}`, config)
             .then((res) => {
                 gatUsers()
+                handleMinus()
                 // console.log(res);
             })
             .catch((err) => console.log(err))
@@ -74,6 +76,7 @@ export default function Home() {
             .then((result) => {
                 setOriginalContacts(result.data.data);
                 setContacts(result.data.data);
+                // console.log(result.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -84,7 +87,7 @@ export default function Home() {
     }, []);
     return (
         <>
-            <div id={style.conatiner} className="container  border border-white rounded-5 p-5">
+            <div id={style.conatiner} className="container   p-5">
                 <div className={`${style.searchbtn}  d-flex justify-content-center`}>
                     <input
                         className="form-control m-3  rounded-pill"
@@ -102,8 +105,9 @@ export default function Home() {
                     </button>
                     <div className="clearfix "></div>
                 </div>
+                <div id={style.line} className=" d-flex"></div>
                 <div className="row ">
-                    {contacts.slice(start, end).map((contact,index) => {
+                    {contacts.slice(start, end).map((contact, index) => {
                         return (
                             <>
                                 <div key={index} className=" p-5   d-flex flex-column flex-sm-row gap-3 justify-content-between ">
@@ -119,19 +123,21 @@ export default function Home() {
                                     </div>
                                     <div className="icon d-flex align-items-start gap-4">
                                         <button className="rounded-2 border-0">
-                                            <i className="fa-solid fa-pen-to-square p-2"></i>
+                                            <Link to={`/update/${contact.id}`}>
+                                                <i className="fa-solid fa-pen-to-square p-2"></i>
+                                            </Link>
                                         </button>
                                         <button onClick={() => handleDelete(contact.id)} className="rounded-2 border-0">
                                             <i className="p-2 fa-solid fa-trash "></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div className={style.line}></div>
+
                             </>
                         )
                     })}
                 </div>
-                <div className="switch d-flex justify-content-end align-items-center ">
+                <div id={style.switch} className=" switch d-flex justify-content-end align-items-center ">
                     <div onClick={handleMinus}>
                         <i className="fa-solid fa-chevron-left mx-3"></i>
                     </div>

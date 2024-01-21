@@ -1,0 +1,14 @@
+#conatiner {
+    
+    width: 70vw;
+    height: 667px;
+    border-radius: 25px;
+    border: 1px solid #FFF;
+    background: #FFF;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+#saveUser{
+    padding-top: 110px !important;
+}
