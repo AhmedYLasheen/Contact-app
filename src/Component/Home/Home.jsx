@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./Home.module.css";
 import axios from "axios";
+
 
 export default function Home() {
     const [contacts, setContacts] = useState([]);
@@ -107,7 +108,7 @@ export default function Home() {
                 </div>
                 <div id={style.line} className=" d-flex"></div>
                 <div className="row ">
-                    {contacts.slice(start, end).map((contact, index) => {
+                    {contacts.length>0?contacts.slice(start, end).map((contact, index) => {
                         return (
                             <>
                                 <div key={index} className=" p-5   d-flex flex-column flex-sm-row gap-3 justify-content-between ">
@@ -122,8 +123,8 @@ export default function Home() {
                                         </div>
                                     </div>
                                     <div className="icon d-flex align-items-start gap-4">
-                                        <button className="rounded-2 border-0">
-                                            <Link to={`/update/${contact.id}`}>
+                                        <button  className="rounded-2 border-0">
+                                            <Link to={`/updat/${contact.id}`}>
                                                 <i className="fa-solid fa-pen-to-square p-2"></i>
                                             </Link>
                                         </button>
@@ -135,7 +136,8 @@ export default function Home() {
 
                             </>
                         )
-                    })}
+                    }):<div className=" d-flex justify-content-center align-items-center">
+                        <i className="fa fa-spinner faspin fa-5x"></i></div>}
                 </div>
                 <div id={style.switch} className=" switch d-flex justify-content-end align-items-center ">
                     <div onClick={handleMinus}>

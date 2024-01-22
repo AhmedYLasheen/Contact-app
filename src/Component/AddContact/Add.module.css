@@ -12,3 +12,26 @@
 #saveUser{
     padding-top: 110px !important;
 }
+
+.imgInput{
+    display: none;
+}
+  .file_upload_label input {
+    display: none;
+  }
+
+  .file_upload_design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor:pointer
+  }
+
+  .userImg {
+    width: 109px;
+    height: 106px;
+    border: none;
+    border-radius: 50%;
+}
